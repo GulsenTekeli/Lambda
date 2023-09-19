@@ -1,10 +1,13 @@
+package lambda;
+
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Lambda02 {
+public class Lambda03 {
     public static void main(String[] args) {
+
 
         List<String> myList = new ArrayList<>();
         myList.add("Ali");
@@ -32,18 +35,18 @@ public class Lambda02 {
         myList.
                 stream().
                 filter(t-> !t.startsWith("E")).
-                forEach(t-> System.out.print(t+" "));
+                forEach(Utils::printInTheSameLineWithSpace);
     }
 
-        //Example 2: Bir List'te character sayisi 5 den az olan tum elemanlari
-        // tekrarsiz olarak console'a yazdiran method'u olusturunuz.
+    //Example 2: Bir List'te character sayisi 5 den az olan tum elemanlari
+    // tekrarsiz olarak console'a yazdiran method'u olusturunuz.
 
     public static void printDistinctElementLengthLessThanFive(List<String> myList){
         myList.
                 stream().
                 distinct().
                 filter(t->t.length()<5).
-                forEach(t-> System.out.print(t+" "));
+                forEach(Utils::printInTheSameLineWithSpace);
     }
 
     //Example 3: Bir List'teki character sayisi 5 den cok olan tum elemanlari
@@ -52,12 +55,12 @@ public class Lambda02 {
         return myList.
                 stream().
                 filter(t->t.length()>5).
-                map(t->t.toUpperCase()).
-                collect(Collectors.toList());
+                map(String::toUpperCase).//class name :: method name ==> method reference
+                        collect(Collectors.toList());
     }
 
-        //Example 4: Bir List'teki character sayisi 5 den az olan tum elemanlari tekrarsiz olarak kucuk harflerle
-        // natural order da console'a yazdiran method'u olusturunuz.
+    //Example 4: Bir List'teki character sayisi 5 den az olan tum elemanlari tekrarsiz olarak kucuk harflerle
+    // natural order da console'a yazdiran method'u olusturunuz.
 
     public static void printElementsLengthLessThanFiveUniqueLowerCase(List<String> myList){
 
@@ -65,9 +68,9 @@ public class Lambda02 {
                 stream().
                 distinct().
                 filter(t->t.length()<5).
-                map(t->t.toLowerCase()).
+                map(String::toLowerCase).
                 sorted().
-                forEach(t-> System.out.print(t+" "));
+                forEach(Utils::printInTheSameLineWithSpace);
     }
     //Example 5: Bir List'teki elemanlari tekrarsiz olarak buyuk harflerle alfabetik sirada
     // console'a yazdiran method'u olusturunuz.
@@ -75,19 +78,20 @@ public class Lambda02 {
         myList.
                 stream().
                 distinct().
-                map(t->t.toUpperCase()).
+                map(String::toUpperCase).
                 sorted().
-                forEach(t-> System.out.print(t+" "));
+                forEach(Utils::printInTheSameLineWithSpace);
     }
     //Example 6: Bir List'teki elemanlari tekrarsiz olarak kucuk harflerle uzunluklarina gore kucukten buyuge
     // siralayarak console'a yazdiran method'u olusturunuz.
+
+    //==>best practice
     public static void printElUniqueLowerCaseSortWithLength(List<String> myList){
         myList.
                 stream().
                 distinct().
-                map(t->t.toLowerCase()).
-                sorted(Comparator.comparing(t->t.length())).
-                forEach(t-> System.out.print(t+" "));
+                map(String::toLowerCase).
+                sorted(Comparator.comparing(String::length)).
+                forEach(Utils::printInTheSameLineWithSpace);
     }
-
 }

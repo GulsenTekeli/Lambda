@@ -1,3 +1,19 @@
+package lambda;
+/*
+Distinct    :Tekrarsız
+Reduce      :Çoklu datanın teke indirilmesi(azaltılması)
+Sorted      :Küçükten büyüğe sıralar.
+RevoredOrder :Tersten sıralama yapar yani;büyükten küçüğe
+Collect     :Topla demek.
+Comparator  :Karşılaştırır ve sıralar(renkleri,uzunlukları)
+RemoveIf    :Belli kurala uyuyorsa sil demek.
+IntStream   :Tüm integerları stream formatında verir.Tam sayılardan oluşan aralık verir.
+Range       :Başlangıç dahil, bitiş hariç
+RangeClosed :Çoku teke redution yapmak. Seçim yapmak.
+LongSream   :Uzunlukları verir.
+GetAsInt    :Int gibi demek.
+ */
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -6,6 +22,7 @@ import java.util.List;
 public class Lambda01 {
     //1) Bir list'teki cift elemanlari ayni satirda aralarina bosluk koyarak yazdiran
     // method'u olusturunuz.(Structured)
+
 
 
     public static void main(String[] args) {
